@@ -2,14 +2,11 @@
 // catRoute
 const express = require('express');
 const router = express.Router();
+const catController = require('../controllers/catController');
 
-router.get('/cat', (req, res) => {
-  res.send('With this endpoint you can get cats.');
-});
+router.get('/cat', catController.cat_list_get);
 
-router.get('/cat/:id', (req, res) => {
-  res.send('You reqested a cat whose id is ' + req.params.id);
-});
+router.get('/cat/:id', catController.cat_get);
 
 router.post('/cat', (req, res) => {
   res.send('With this endpoint you can add cats.');
