@@ -3,12 +3,15 @@
 const express = require('express');
 const router = express.Router();
 const catController = require('../controllers/catController');
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
+
 
 router.get('/cat', catController.cat_list_get);
 
 router.get('/cat/:id', catController.cat_get);
 
-router.post('/cat', (req, res) => {
+router.post('/cat', upload.single('cat') , (req, res) => {
   res.send('With this endpoint you can add cats.');
 });
 
