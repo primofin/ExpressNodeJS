@@ -5,11 +5,9 @@ const userModel = require('../models/userModel.js');
 const users = userModel.users;
 
 const user_list_get = (req, res) => {
-    console.log(users);
     for(let i = 0 ; i < users.length; i ++){
         delete users[i].password;
     };
-    console.log(users);//After delete the user's password
     res.json(users);
 };
 
